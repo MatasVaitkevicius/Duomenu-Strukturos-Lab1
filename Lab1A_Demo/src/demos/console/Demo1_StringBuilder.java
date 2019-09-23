@@ -41,6 +41,7 @@ public class Demo1_StringBuilder extends BaseConsole{
         addButton("pir#",      action -> printPyramid(pyrHeight++, "#"));
         addButton("pir\u25B2", action -> printPyramid(pyrHeight++, "\u25B2"));
         addButton("pir\u25CF", action -> printPyramid(pyrHeight++, "\u25CF"));
+        addButton("pir\u25BC", action -> upsideDownPyramid(pyrHeight++, "\u25BC"));
     }
     private int pyrHeight = 1;
     private void printPyramid(int h, String fillSym){
@@ -59,8 +60,22 @@ public class Demo1_StringBuilder extends BaseConsole{
         }
     }
 // sudarykite pasirinktinai metodus apverstai ar pasuktai piramidei spausdinti
-    private void anotherPyramid(int h){
-    }     
+    private void upsideDownPyramid(int h, String fillSym) {
+        final char emptySym = ' ';
+        int counter = 1;
+        printLn("Apversta Piramidė h = " + h);
+        StringBuilder firstPyramid = new StringBuilder();
+        firstPyramid.append(new String(new char[h]).replace('\0', emptySym));
+        StringBuilder secondPyramid = new StringBuilder(fillSym);
+        for (int i = 0; i < h; i++) {
+            secondPyramid.append(fillSym).append(fillSym);
+        }
+        for (int i = 0; i <= h; i++) {
+            counter++;
+            printLn(firstPyramid.toString() + secondPyramid);
+            secondPyramid.replace(i, counter, " ");
+        }
+    }   
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Eksperimentai su StringBuilder (VirP)");
