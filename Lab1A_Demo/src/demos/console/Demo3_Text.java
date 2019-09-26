@@ -86,6 +86,48 @@ public class Demo3_Text extends BaseConsole{
         while (m.find())                     // kol randamas šablonas
             ta2.appendText(m.group() + nL);  // pateikiamas jo atitikmuo
     }
+    void regexExampleMinus(){
+        if(ta1.getText().isEmpty())  // jei tuščia - pateikiame demo variantą
+            ta1.appendText("MINUSAS----MINUSAS----PLIUSAS+-+-+-+MINUSAS" + nL);
+        String userInput = readLastLine();
+        String regex = "[-]+";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(userInput);
+        while (matcher.find())
+        {
+            ta2.appendText(matcher.group() + nL);  // pateikiamas jo atitikmuo
+        }
+    }
+    void regexExampleLatinLettters(){
+        if(ta1.getText().isEmpty())  // jei tuščia - pateikiame demo variantą
+            ta1.appendText("d+<>pirmas=1;antras>-22:trečias:333viskas" + nL);
+        String[] sa = readLastLine().split("<>");      // padaliname į dvi dalis
+        ta2.appendText(String.join(" : ", sa)+nL); // pakartojame dešinėje
+        Pattern pat = Pattern.compile(sa[0]);      // pirma dalis - tai Pattern
+        Matcher m = pat.matcher(sa[1]);            // kita dalis - apdorojimui
+        while (m.find())                     // kol randamas šablonas
+            ta2.appendText(m.group() + nL);  // pateikiamas jo atitikmuo
+    }
+    void regexExampleLithuanianLetters(){
+        if(ta1.getText().isEmpty())  // jei tuščia - pateikiame demo variantą
+            ta1.appendText("d+<>pirmas=1;antras>-22:trečias:333viskas" + nL);
+        String[] sa = readLastLine().split("<>");      // padaliname į dvi dalis
+        ta2.appendText(String.join(" : ", sa)+nL); // pakartojame dešinėje
+        Pattern pat = Pattern.compile(sa[0]);      // pirma dalis - tai Pattern
+        Matcher m = pat.matcher(sa[1]);            // kita dalis - apdorojimui
+        while (m.find())                     // kol randamas šablonas
+            ta2.appendText(m.group() + nL);  // pateikiamas jo atitikmuo
+    }
+    void regexExampleInfoBetweenBrackets(){
+        if(ta1.getText().isEmpty())  // jei tuščia - pateikiame demo variantą
+            ta1.appendText("d+<>pirmas=1;antras>-22:trečias:333viskas" + nL);
+        String[] sa = readLastLine().split("<>");      // padaliname į dvi dalis
+        ta2.appendText(String.join(" : ", sa)+nL); // pakartojame dešinėje
+        Pattern pat = Pattern.compile(sa[0]);      // pirma dalis - tai Pattern
+        Matcher m = pat.matcher(sa[1]);            // kita dalis - apdorojimui
+        while (m.find())                     // kol randamas šablonas
+            ta2.appendText(m.group() + nL);  // pateikiamas jo atitikmuo
+    }
     @Override
     public void createControls() {
         super.createControls();
@@ -94,7 +136,12 @@ public class Demo3_Text extends BaseConsole{
         addButton("sort",    action -> sortStandart());       
         addButton("sortLT",  action -> sortLT());       
         addButton("locales", action -> listLocales());       
-        addButton("regex",   action -> regexExamples());         
+        addButton("regex",   action -> regexExamples());
+        addButton("regexMinux",   action -> regexExampleMinus());
+        addButton("regexLatinLetters",   action -> regexExampleLatinLettters());
+        addButton("regexLithuaninaLetters",   action -> regexExampleLithuanianLetters());
+        addButton("regexInfoBetweenBrackets",   action -> regexExampleInfoBetweenBrackets());
+
     }
     @Override
     public void start(Stage stage) throws Exception {
