@@ -95,38 +95,44 @@ public class Demo3_Text extends BaseConsole{
         Matcher matcher = pattern.matcher(userInput);
         while (matcher.find())
         {
-            ta2.appendText(matcher.group() + nL);  // pateikiamas jo atitikmuo
+            ta2.appendText(matcher.group() + nL);
         }
     }
     void regexExampleLatinLettters(){
         if(ta1.getText().isEmpty())  // jei tuščia - pateikiame demo variantą
-            ta1.appendText("d+<>pirmas=1;antras>-22:trečias:333viskas" + nL);
-        String[] sa = readLastLine().split("<>");      // padaliname į dvi dalis
-        ta2.appendText(String.join(" : ", sa)+nL); // pakartojame dešinėje
-        Pattern pat = Pattern.compile(sa[0]);      // pirma dalis - tai Pattern
-        Matcher m = pat.matcher(sa[1]);            // kita dalis - apdorojimui
-        while (m.find())                     // kol randamas šablonas
-            ta2.appendText(m.group() + nL);  // pateikiamas jo atitikmuo
+            ta1.appendText("LOTYNI123-ŠKI *RAŠ2M3EN1YS" + nL);
+        String userInput = readLastLine();
+        String regex = "[A-Za-z]+";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(userInput);
+        while (matcher.find())
+        {
+            ta2.appendText(matcher.group() + nL);
+        }
     }
     void regexExampleLithuanianLetters(){
         if(ta1.getText().isEmpty())  // jei tuščia - pateikiame demo variantą
-            ta1.appendText("d+<>pirmas=1;antras>-22:trečias:333viskas" + nL);
-        String[] sa = readLastLine().split("<>");      // padaliname į dvi dalis
-        ta2.appendText(String.join(" : ", sa)+nL); // pakartojame dešinėje
-        Pattern pat = Pattern.compile(sa[0]);      // pirma dalis - tai Pattern
-        Matcher m = pat.matcher(sa[1]);            // kita dalis - apdorojimui
-        while (m.find())                     // kol randamas šablonas
-            ta2.appendText(m.group() + nL);  // pateikiamas jo atitikmuo
+            ta1.appendText("LIETUVIŠKI RAŠMENYS ŠĄČĘąčęėįęėš<>įtįę" + nL);
+        String userInput = readLastLine();
+        String regex = "[Ą-Žą-ž]+";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(userInput);
+        while (matcher.find())
+        {
+            ta2.appendText(matcher.group() + nL);
+        }
     }
     void regexExampleInfoBetweenBrackets(){
-        if(ta1.getText().isEmpty())  // jei tuščia - pateikiame demo variantą
-            ta1.appendText("d+<>pirmas=1;antras>-22:trečias:333viskas" + nL);
-        String[] sa = readLastLine().split("<>");      // padaliname į dvi dalis
-        ta2.appendText(String.join(" : ", sa)+nL); // pakartojame dešinėje
-        Pattern pat = Pattern.compile(sa[0]);      // pirma dalis - tai Pattern
-        Matcher m = pat.matcher(sa[1]);            // kita dalis - apdorojimui
-        while (m.find())                     // kol randamas šablonas
-            ta2.appendText(m.group() + nL);  // pateikiamas jo atitikmuo
+                if(ta1.getText().isEmpty())  // jei tuščia - pateikiame demo variantą
+            ta1.appendText("(sugauna viska tarp skliaustu)AAAbbb(0)((00))()" + nL);
+        String userInput = readLastLine();
+        String regex = "\\((.*?)\\)";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(userInput);
+        while (matcher.find())
+        {
+            ta2.appendText(matcher.group() + nL);
+        }
     }
     @Override
     public void createControls() {
