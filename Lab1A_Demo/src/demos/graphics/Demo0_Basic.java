@@ -83,6 +83,10 @@ public class Demo0_Basic extends BaseGraphics {
         {
             sb.append(ch);
         }
+        for (char ch = '\u2669'; ch <= '\u267F'; ch++) //Nuo kur iki kur
+        {
+            sb.append(ch);
+        }
         gc.setFont(Font.font("Lucida Console", 36));
         gc.setLineWidth(1);
         gc.setStroke(Color.BLACK);
@@ -92,8 +96,7 @@ public class Demo0_Basic extends BaseGraphics {
 // https://www.tutorialspoint.com/javafx/2dshapes_polygon    
 
     private void drawExamples2() {
-        double lineWeight = 3;
-        gc.setLineWidth(lineWeight);
+        gc.setLineWidth(3);
         gc.setStroke(Color.RED);
         int x = 100, y = 100, w = 40, h = 40,
                 roundedX = 0, roundedY = 0;
@@ -124,17 +127,17 @@ public class Demo0_Basic extends BaseGraphics {
         gc.setLineWidth(lineWeight);
         gc.setStroke(Color.rgb(62, 118, 236)); // Blue
         gc.strokeOval(250, 120, 100, 100); //First two elements control x and y
-        
-        gc.setStroke(Color.rgb(255,206,1)); // Yellow
+
+        gc.setStroke(Color.rgb(255, 206, 1)); // Yellow
         gc.strokeOval(310, 180, 100, 100);
-        
-        gc.setStroke(Color.rgb(0,0,0)); // Black
+
+        gc.setStroke(Color.rgb(0, 0, 0)); // Black
         gc.strokeOval(365, 120, 100, 100);
-        
-        gc.setStroke(Color.rgb(23,154,19)); // Green
+
+        gc.setStroke(Color.rgb(23, 154, 19)); // Green
         gc.strokeOval(425, 180, 100, 100);
 
-        gc.setStroke(Color.rgb(255,0,0)); // Red
+        gc.setStroke(Color.rgb(255, 0, 0)); // Red
         gc.strokeOval(485, 120, 100, 100);
 
     }
@@ -144,6 +147,29 @@ public class Demo0_Basic extends BaseGraphics {
 // arba futbolo, krepšinio ar ledo ritulio aikštes su žaidėjų pozicijomis  
 
     private void drawFreeThema() {
+        gc.setLineWidth(2);
+        gc.setStroke(Color.RED);
+        gc.setFill(Color.RED);
+        gc.strokeRect(150, 100, 300, 100);
+        gc.fillRect(150, 100, 300, 100); // Raudonas vėliavos viršus 
+
+        gc.setStroke(Color.YELLOW);
+        gc.setFill(Color.YELLOW);
+        gc.strokeRect(150, 200, 300, 100);
+        gc.fillRect(150, 200, 300, 100); // Geltonas vėliavos viršus
+
+        gc.setStroke(Color.GREEN);
+        gc.setFill(Color.GREEN);
+        gc.strokeRect(150, 300, 300, 100);
+        gc.fillRect(150, 300, 300, 100); // Žalias vėliavos viršus
+
+        gc.setStroke(Color.BLACK);
+        gc.setFill(Color.BLACK);
+        double xStar[] = {280, 300, 320, 315, 340, 310, 300, 290, 260, 285};
+        double yStar[] = {295, 280, 295, 270, 250, 250, 220, 250, 250, 270};
+        
+        gc.strokePolygon(xStar, yStar, xStar.length);
+        gc.fillPolygon(xStar, yStar, xStar.length); //Ghana Flag            
     }
 // kontrolinės užduotys gynimo metu:
 // įvairios vėliavos, tiesiog tokios sudėtinės figūros kaip namukas,
@@ -162,7 +188,7 @@ public class Demo0_Basic extends BaseGraphics {
         addButton("DrawExamples2", e -> drawExamples2());
         addButton("DrawExamples3", e -> drawExamples3());
         addButton("DrawOlympicRings", e -> drawOlympicRings());
-
+        addButton("DrawFreeThema", e -> drawFreeThema());
         addNewHBox();
     }
 
