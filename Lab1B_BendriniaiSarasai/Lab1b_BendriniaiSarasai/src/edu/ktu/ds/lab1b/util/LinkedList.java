@@ -72,7 +72,32 @@ public class LinkedList<E extends Comparable<E>>
         if (k < 0 || k >= size) {
             return false;
         }
-        throw new UnsupportedOperationException("Studentams reikia realizuoti add(int k, E e)");
+        // Įterpiamas į priekį
+        if (k == 0) {
+            size++;
+            Node<E> newNode = new Node(e, first);
+            first = newNode;
+            return true;
+        }
+        // Įterpiamas į galą
+        if (k == size) {
+            Node<E> newNode = new Node(e, null);
+            last.next = newNode;
+            last = newNode;
+            size++;
+            return true;
+        }
+        if (k > 0 && k < size) {
+            //Node<E> search = first;
+            Node<E> left = first.findNode(k - 1);
+            //Node<E> right = first.findNode(k);
+            Node<E> newNode = new Node(e, left.next);
+            left.next = newNode;
+            size++;
+            return true;
+        }
+        return false;
+        //throw new UnsupportedOperationException("Studentams reikia realizuoti add(int k, E e)");
     }
 
     /**
@@ -129,7 +154,18 @@ public class LinkedList<E extends Comparable<E>>
      */
     @Override
     public E set(int k, E e) {
-        throw new UnsupportedOperationException("Studentams reikia realizuoti set(int k, E e)");
+        if (e == null) {
+            return null;
+        }
+        if (k < 0 || k >= size) {
+            return null;
+        }
+
+        current = first.findNode(k);
+        E oldElement = current.element;
+        current.element = e;
+        return oldElement;
+        //throw new UnsupportedOperationException("Studentams reikia realizuoti set(int k, E e)");
     }
 
     /**
@@ -157,7 +193,98 @@ public class LinkedList<E extends Comparable<E>>
      */
     @Override
     public E remove(int k) {
-        throw new UnsupportedOperationException("Studentams reikia realizuoti remove(int k)");
+        if (k < 0 || k >= size) {
+            return null;
+        }
+
+        Node<E> actual = null;
+        if (k == 0) {
+            actual = first;
+            first = actual.next;
+            if (first == null) {
+                last = null;
+            }
+        } else {
+            Node<E> previous = first.findNode(k - 1);
+            actual = previous.next;
+            previous.next = actual.next;
+            if (actual.next == null) {
+                last = previous;
+            }
+        }
+        size--;
+
+        return actual.element;
+        //throw new UnsupportedOperationException("Studentams reikia realizuoti remove(int k)");
+    }
+
+    public void addLast(E e) {
+        if (e == null) {
+            return;
+        }
+        if (first == null) {
+            first = new Node(e, first);
+            last = first;
+        } else {
+            Node<E> e1 = new Node(e, null);
+            last.next = e1;
+            last = e1;
+        }
+        size++;
+    }
+
+    public boolean remove(E e) {
+        if (e == null) {
+            return false;
+        }
+        for (Node<E> here = first; here != null; here = current.next) {
+            if (here.equals(e) && here.equals(first)) {
+                first = null;
+                first = here.next;
+                size--;
+                return true;
+            }
+            if (here.next.equals(e) && here.next.equals(last)) {
+                last = null;
+                last = here;
+                size--;
+                return true;
+            }
+            if (here.equals(e)) {
+                here = null;
+                size--;
+                return true;
+            }
+        }
+
+        return false;
+    }
+    //? Gali buti kvieciamas tik argumentams klasiu, paveldinicu klase E
+    public boolean addAll(int index, LinkedList<? extends E> c) {
+        
+        LinkedList<E> newList = (LinkedList<E>) c;
+        
+        if (index < 0) {
+            return false;
+        }
+        if(index == size ) {
+            last.next = newList.first;
+            size += c.size;
+            return true;
+        }
+        if (index == 0) {
+            Node<E> secondFirst = first;
+            first = newList.first;
+            newList.last.next = secondFirst;
+        } else {
+            Node<E> searchedNode = first.findNode(index);
+            Node<E> nextNodes = searchedNode.next;
+            searchedNode.next = newList.first;
+            newList.last.next = nextNodes;
+        }
+        
+        first.findNode(index);
+        return false;
     }
 
     /**
