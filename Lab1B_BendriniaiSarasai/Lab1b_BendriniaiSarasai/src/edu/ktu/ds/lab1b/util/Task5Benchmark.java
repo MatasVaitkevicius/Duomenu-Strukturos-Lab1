@@ -19,6 +19,7 @@ public class Task5Benchmark {
     Random random = new Random();
 
     void generateValues(int count) {
+        values.clear();
         random.setSeed(2000);
         for (int i = 0; i < count; i++) {
             values.add(random.nextDouble());
@@ -43,14 +44,16 @@ public class Task5Benchmark {
     }
 
     void benchmarkMathSqrt() {
+        double answer = 0.0;
         for (int i = 0; i < values.size(); i++) {
-            Math.sqrt(values.get(i));
+            answer = Math.sqrt(values.get(i));
         }
     }
 
     void benchmarkMathSin() {
+        double answer = 0.0;
         for (int i = 0; i < values.size(); i++) {
-            Math.sin(values.get(i));
+            answer = Math.sin(values.get(i));
         }
     }
     
