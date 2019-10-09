@@ -112,13 +112,34 @@ public class Demo0_Basic extends BaseGraphics {
         double yPentagon[] = {140, 140, 110, 90, 110};
         gc.strokePolygon(xPentagon, yPentagon, xPentagon.length); //Pentagon
     }
-// UŽDUOTIS_3: nubrėžkite taisyklingus 3, 4, 5, ..., 9-kampius  
 
+// UŽDUOTIS_3: nubrėžkite taisyklingus 3, 4, 5, ..., 9-kampius  
     private void drawExamples3() {
         // Nurodymas: parašykite funkciją, kuri paskaičiuoja skaičių masyvus
         // kuriuose surašomos taisyklingo daugiakampio koordinatės
-        gc.setStroke(Color.RED);
-        gc.strokeRect(100, 150, 100, 100);
+        int start = 3;
+        int end = 9;
+        int x = 50;
+        int startX = 200;
+        int r = 20; // radius
+        for (int i = start; i <= end; i++) {
+            double points[][] = calculatePointsForArray(startX, 100, i, r);
+            gc.setFill(Color.BLACK);
+            gc.fillPolygon(points[0], points[1], i);
+            startX += x;
+        }
+    }
+
+    private double[][] calculatePointsForArray(int x, int y, int n, int r) {
+        double[] xArray = new double[n];
+        double[] yArray = new double[n];
+        for (int i = 0; i < n; i++) {
+            // apskiciuojame cos
+            xArray[i] = x + r * Math.cos(2 * Math.PI * i / n);
+            // apskaiciuojame sin
+            yArray[i] = y + r * Math.sin(2 * Math.PI * i / n);
+        }
+        return new double[][]{xArray, yArray};
     }
 
 // UŽDUOTIS_4: nubrėžkite žiedus https://en.wikipedia.org/wiki/Olympic_symbols
@@ -147,7 +168,6 @@ public class Demo0_Basic extends BaseGraphics {
 // arba futbolo, krepšinio ar ledo ritulio aikštes su žaidėjų pozicijomis  
 
     private void drawFreeThema() {
-        gc.setLineWidth(2);
         gc.setStroke(Color.RED);
         gc.setFill(Color.RED);
         gc.strokeRect(150, 100, 300, 100);
@@ -167,9 +187,81 @@ public class Demo0_Basic extends BaseGraphics {
         gc.setFill(Color.BLACK);
         double xStar[] = {280, 300, 320, 315, 340, 310, 300, 290, 260, 285};
         double yStar[] = {295, 280, 295, 270, 250, 250, 220, 250, 250, 270};
-        
+
         gc.strokePolygon(xStar, yStar, xStar.length);
-        gc.fillPolygon(xStar, yStar, xStar.length); //Ghana Flag            
+        gc.fillPolygon(xStar, yStar, xStar.length); //Ghana Flag   
+//==============================================================================
+        gc.setStroke(Color.BLUE);
+        gc.setFill(Color.BLUE);
+        gc.strokeRect(500, 100, 100, 100);
+        gc.fillRect(500, 100, 100, 100);
+
+        gc.setStroke(Color.WHITE);
+        gc.setFill(Color.WHITE);
+        double xCross[] = {540, 540, 500, 500, 540, 540, 540, 560, 560, 600, 600, 560, 560};
+        double yCross[] = {100, 140, 140, 160, 160, 160, 200, 200, 160, 160, 140, 140, 100};
+        gc.strokePolygon(xCross, yCross, xCross.length);
+        gc.fillPolygon(xCross, yCross, xCross.length);
+
+        double xSmallRectangle[] = {600, 600, 900, 900};
+        double ySmallRectangle[] = {120, 100, 100, 120};
+        gc.setStroke(Color.BLUE);
+        gc.setFill(Color.BLUE);
+        gc.strokePolygon(xSmallRectangle, ySmallRectangle, xSmallRectangle.length);
+        gc.fillPolygon(xSmallRectangle, ySmallRectangle, xSmallRectangle.length);
+        int surplusSmallRectangle = 20;
+        for (int i = 0; i < 5; i++) {
+            if (i % 2 == 0) {
+                double ySmallRectangleFor[] = {120 + surplusSmallRectangle,
+                    100 + surplusSmallRectangle, 100 + surplusSmallRectangle,
+                    120 + surplusSmallRectangle};
+                gc.setStroke(Color.WHITE);
+                gc.setFill(Color.WHITE);
+                gc.strokePolygon(xSmallRectangle, ySmallRectangleFor, xSmallRectangle.length);
+                gc.fillPolygon(xSmallRectangle, ySmallRectangleFor, xSmallRectangle.length);
+            } else {
+                double ySmallRectangleFor[] = {120 + surplusSmallRectangle,
+                    100 + surplusSmallRectangle, 100 + surplusSmallRectangle,
+                    120 + surplusSmallRectangle};
+                gc.setStroke(Color.BLUE);
+                gc.setFill(Color.BLUE);
+                gc.strokePolygon(xSmallRectangle, ySmallRectangle,
+                        xSmallRectangle.length);
+                gc.fillPolygon(xSmallRectangle, ySmallRectangleFor,
+                        xSmallRectangle.length);
+            }
+            surplusSmallRectangle += 20;
+        }
+
+        double xBigRectangle[] = {500, 500, 900, 900};
+        double yBigRectangle[] = {220, 200, 200, 220};
+        gc.setStroke(Color.WHITE);
+        gc.setFill(Color.WHITE);
+        gc.strokePolygon(xBigRectangle, yBigRectangle, xBigRectangle.length);
+        gc.fillPolygon(xBigRectangle, yBigRectangle, xBigRectangle.length);
+        int surplusBigRectangle = 20;
+        for (int i = 0; i < 4; i++) {
+            if (i % 2 == 0) {
+                double yBigRectangleFor[] = {220 + surplusBigRectangle,
+                    200 + surplusBigRectangle, 200 + surplusBigRectangle,
+                    220 + surplusBigRectangle};
+                gc.setStroke(Color.BLUE);
+                gc.setFill(Color.BLUE);
+                gc.strokePolygon(xBigRectangle, yBigRectangleFor, xBigRectangle.length);
+                gc.fillPolygon(xBigRectangle, yBigRectangleFor, xBigRectangle.length);
+            } else {
+                double yBigRectangleFor[] = {220 + surplusBigRectangle,
+                    200 + surplusBigRectangle, 200 + surplusBigRectangle,
+                    220 + surplusBigRectangle};
+                gc.setStroke(Color.WHITE);
+                gc.setFill(Color.WHITE);
+                gc.strokePolygon(xBigRectangle, yBigRectangleFor,
+                        xBigRectangle.length);
+                gc.fillPolygon(xBigRectangle, yBigRectangleFor,
+                        xBigRectangle.length);
+            }
+            surplusBigRectangle += 20;
+        }
     }
 // kontrolinės užduotys gynimo metu:
 // įvairios vėliavos, tiesiog tokios sudėtinės figūros kaip namukas,
