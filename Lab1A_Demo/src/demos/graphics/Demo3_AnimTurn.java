@@ -45,24 +45,28 @@ public class Demo3_AnimTurn extends BaseGraphics {
         gc.setLineWidth(1.0);
         gc.strokeLine(0, 0, 0, canvasH/2);
         gc.setFill(randomColor());
-        gc.fillOval(10, -canvasH/2+60, 111, 99);
+        gc.fillRect(10, -canvasH/2+60, 111, 99);
     }    
     private void baseSuite2() {
-        gc.setStroke(Color.YELLOW);
+        gc.setStroke(randomColor());
         gc.strokeLine(0, 0, 0, canvasH/2);
 
         gc.setFill(randomColor(0.9));
-        gc.setStroke(Color.RED);
+        gc.setStroke(randomColor());
         gc.fillOval(10, -60, 15, 30);
-        gc.strokeOval(-60, 60, 44, 33);
+        gc.strokeRect(-60, 60, 44, 33);
 
         gc.setFill(randomColor(0.8));
         gc.fillRoundRect(-130, -90, 30, 30, 40, 10);
 
         gc.setFill(randomColor());
         gc.fillPolygon( // žvaigždė penkių kampų, paskaičiuota atskirai
-            new double[]{104, 116, 159, 123, 133, 105,  77,  87,  51,  93},
-            new double[]{151, 185, 186, 204, 246, 222, 246, 204, 186, 186}, 10);
+            new double[]{104, 116, 159, 123, 133},
+            new double[]{151, 185, 186, 204, 246}, 5);
+        gc.setFill(randomColor());
+        gc.fillPolygon( // žvaigždė penkių kampų, paskaičiuota atskirai
+            new double[]{105,  77,  87,  51,  93},
+            new double[]{246, 204, 186, 186}, 4);
     }
     @Override
     public void createControls() {
