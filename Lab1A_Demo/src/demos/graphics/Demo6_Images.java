@@ -46,19 +46,26 @@ public class Demo6_Images extends BaseGraphics {
     Image space = new Image( "images\\space.png" );
     Image sun   = new Image( "images\\sun.png" );
     Image earth = new Image( "images\\earth.png" );
+    Image ufo = new Image("images\\ufo_0.png");
     ImageView earthView = new ImageView(earth);
+    ImageView ufoView = new ImageView(ufo);
     // kosmosą ir saulę nupiešime ant drobės, o žemę paleisime suktis
     void createSpace(){
         final double xc = canvasW / 2;
         final double yc = canvasH / 2;
         final double radius = canvasW / 2 - earth.getWidth();
+        final double radius2 = canvasW / 3 - ufo.getWidth();
         
         gc.drawImage( space, 0, 0 );
         gc.drawImage( sun, xc - sun.getWidth() / 2, yc - sun.getHeight() / 2);
         nodes.add(earthView);
+        nodes.add(ufoView);
         earthView.setSmooth(false);
         earthView.setScaleX(1.5);
         earthView.setScaleY(1.5);
+        ufoView.setSmooth(false);
+        ufoView.setScaleX(1);
+        ufoView.setScaleY(1);
         final long startNanoTime = System.nanoTime();
         new AnimationTimer() {
             @Override
@@ -66,12 +73,20 @@ public class Demo6_Images extends BaseGraphics {
                 double t = (now - startNanoTime) / 1_000_000_000.0; 
                 earthView.setX(xc - earth.getWidth()/2 + radius * Math.cos(t));
                 earthView.setY(yc - earth.getWidth()/2 + radius * Math.sin(t));
+                ufoView.setX(xc - ufo.getWidth()/2 + radius2 * Math.cos(t+2));
+                ufoView.setY(yc - ufo.getWidth()/2 + radius2 * Math.sin(t+2));
             }
         }.start();        
     }
     // paaiškinkite kintamojo t skaičiavime naudojamą konstantą
     // paskaičiuokite per kiek laiko apskrieja žemė aplink saulę
+//    double EarthTimeToFlyAroundSun() {
+//        double time = ()
+//    }
     // sukurkite start - stopinį mygtuką, kuris aktyvuotų ir stabdytų žemę
+    void StopEarth() {
+        
+    }
     // papildykite erdvę kitais kosminiais ar fantastiniais kūnais
     // 
     //*****************************************
@@ -86,6 +101,7 @@ public class Demo6_Images extends BaseGraphics {
         addButton("clearLast",  e -> {if(nodes.size()>0)
                                         nodes.remove(nodes.size()-1);});
         addButton("Sun_System", e -> createSpace());
+        addButton("Start/Stop", e -> StopEarth());
        addNewHBox();
     }
     @Override
