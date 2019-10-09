@@ -1,0 +1,18 @@
+Baba     Bremenas 1995      60     60,0 
+Aaamas   Brauningas 2000      70     50,0 
+Abc      Dbc      1852     100    160,0 
+Brakata  Alemono  2003      40     50,0 Book has to have more pages >50
+Sruoga   Zenono   2003      50   2000,0 
+Sruoga   Rererer  1969     450    123,0 
+PridetasAutorius0 PridetasPavadinimas0 2012     100    120,0 
+PridetasAutorius1 PridetasPavadinimas1 2011      99    122,0 
+PridetasAutorius2 PridetasPavadinimas2 2010      98    124,0 
+PridetasAutorius3 PridetasPavadinimas3 2009      97    126,0 
+PridetasAutorius4 PridetasPavadinimas4 2008      96    128,0 
+PridetasAutorius5 PridetasPavadinimas5 2007      95    130,0 
+PridetasAutorius6 PridetasPavadinimas6 2006      94    132,0 
+PridetasAutorius7 PridetasPavadinimas7 2005      93    134,0 
+Alio     Pavadinimas 1908     370   1060,0 
+Autorius Bravo    2008     270    325,0 
+Ford     Fiesta   2009     370   1600,0 
+Audi     A6       2006     870    360,0 

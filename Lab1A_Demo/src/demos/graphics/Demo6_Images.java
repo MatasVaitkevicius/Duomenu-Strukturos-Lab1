@@ -85,7 +85,6 @@ public class Demo6_Images extends BaseGraphics {
 //    }
     // sukurkite start - stopinį mygtuką, kuris aktyvuotų ir stabdytų žemę
     void StopEarth() {
-        
     }
     // papildykite erdvę kitais kosminiais ar fantastiniais kūnais
     // 

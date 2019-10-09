@@ -6,7 +6,7 @@
  *
  * Užduotis: Peržiūrėkite ir išsiaiškinkite pateiktus metodus. Metodų algoritmai
  * yra aptarti paslaitos metu
- *****************************************************************************
+ * ****************************************************************************
  */
 package edu.ktu.ds.lab1b.util;
 
@@ -29,7 +29,7 @@ public class ParsableList<E extends Parsable<E>> extends LinkedList<E> {
     public ParsableList(Function<String, E> createFunction) {
         this.createFunction = createFunction;
     }
-    
+
     public void add(String dataString) {        // sukuria elementą iš String
         add(createElement(dataString)); // ir įdeda jį į pabaigą
     }

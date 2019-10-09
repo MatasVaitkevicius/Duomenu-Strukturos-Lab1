@@ -14,13 +14,13 @@ import java.util.Random;
  */
 public class Task5Benchmark {
 
-    int[] counts = {10_000, 20_000, 50_000};
+    int[] counts = {100_000, 200_000, 500_000};
     ArrayList<Double> values = new ArrayList<>();
     Random random = new Random();
 
     void generateValues(int count) {
         values.clear();
-        random.setSeed(2000);
+        random.setSeed(123);
         for (int i = 0; i < count; i++) {
             values.add(random.nextDouble());
         }
@@ -59,7 +59,9 @@ public class Task5Benchmark {
     
     void execute() {
         long memTotal = Runtime.getRuntime().totalMemory();
-        Ks.oun("memTotal= " + memTotal);
+        long memUsed = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        Ks.oun("Memory total = " + memTotal);
+        Ks.oun("Memory used = " + memUsed);
         // Pasižiūrime kaip generuoja automobilius (20) vienetų)
         generateValues(100);
         for (double value : values) {

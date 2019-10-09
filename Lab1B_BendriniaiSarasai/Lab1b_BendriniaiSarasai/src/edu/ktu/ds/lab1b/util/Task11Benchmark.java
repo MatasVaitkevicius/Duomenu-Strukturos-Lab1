@@ -51,8 +51,9 @@ public class Task11Benchmark {
 
     void execute() {
         long memTotal = Runtime.getRuntime().totalMemory();
-        Ks.oun("memTotal= " + memTotal);
-        // Pasižiūrime kaip generuoja automobilius (20) vienetų)
+        long memUsed = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        Ks.oun("Memory total = " + memTotal);
+        Ks.oun("Memory used = " + memUsed);
         generateValues(100);
         Ks.oun("Array List - ");
         for (int value : intArrayList) {
