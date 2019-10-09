@@ -24,10 +24,12 @@ public class Demo2_Transform extends BaseGraphics {
         gc.setFill(randomColor());
         gc.fillRect(0, 0, 30, 40);
         gc.setFill(randomColor());
-        gc.fillOval(0, 0, 30, 40);
+        gc.fillRect(0, 0, 20, 40);
+        gc.setFill(randomColor());
+        gc.fillOval(0, 0, 20, 40);
         gc.setLineWidth(0.6);
-        gc.setStroke(Color.BLACK);
-        gc.strokeText("Hello",0, 50);
+        gc.setStroke(Color.MAGENTA);
+        gc.strokeText("HELLO WORLD",0, 50);
     }
 
     @Override
